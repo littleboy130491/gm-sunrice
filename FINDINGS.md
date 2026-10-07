@@ -81,3 +81,27 @@ Problems, gaps and judgement calls discovered during the migration. Add entries 
     `http://localhost:8000/storage/...`; link fields and bard images now store the
     relative `/storage/...` path so content survives a domain change. Bard images
     primarily render via `<img data-asset-id>` resolved server-side anyway.
+
+## Template porting notes
+
+17. **Hydration shapes differ per field type.** `sections` → `Items` of `Block`
+    (objects); repeater/group rows → **plain PHP arrays** (`$row['field']`, never
+    `->`); `link` → `['url','label','new_tab']` array; `select` options may be a list
+    or keyed map; `Asset->url()` is a method, `->path` is a property (no `path()`).
+    Helpers in `site/app/helpers.php` absorb most of this (`gm_asset_url`, `gm_link_url`).
+
+18. **`$sunricePage` is not visible inside Blade components** — use
+    `request()->attributes->get('sunrice.page')` (set by the frontend controller).
+    Term pages get `$term`/`$taxonomy` but no `$entry` — shared partials must guard
+    with `$entry ?? $term ?? null`.
+
+19. **Taxonomy blueprints needed a glob fallback.** Statamic taxonomy yamls without a
+    `blueprints:` key still have blueprint files under
+    `resources/blueprints/taxonomies/{handle}/*.yaml`; importer now globs them
+    (fixed `industries`/`tags` `blueprint_id` — rich text fields wouldn't hydrate
+    to HTML without a blueprint). Term re-import also needs `forceDelete` +
+    `TermTranslation` delete first (soft-deleted rows still hold the unique
+    `(taxonomy_id, locale, slug)` key).
+
+20. **Dealer `location` field** hydrates as an array (`$loc['latitude']`), not an
+    object — templates must use array access for it.

@@ -362,7 +362,16 @@ class ImportStatamic extends Command
         // 2. Taxonomy blueprints.
         foreach (glob($this->src.'/content/taxonomies/*.yaml') ?: [] as $configFile) {
             $handle = pathinfo($configFile, PATHINFO_FILENAME);
-            foreach ((array) (Statamic::readYaml($configFile)['blueprints'] ?? [$handle]) as $bpHandle) {
+            $bpHandles = (array) (Statamic::readYaml($configFile)['blueprints'] ?? []);
+            if ($bpHandles === []) {
+                // Statamic convention: no explicit list → all files in the
+                // taxonomy's blueprint directory (e.g. industries/industry.yaml).
+                $bpHandles = array_map(
+                    fn ($f) => pathinfo($f, PATHINFO_FILENAME),
+                    glob($this->src."/resources/blueprints/taxonomies/{$handle}/*.yaml") ?: []
+                );
+            }
+            foreach ($bpHandles as $bpHandle) {
                 $bpFile = $this->src."/resources/blueprints/taxonomies/{$handle}/{$bpHandle}.yaml";
                 if (! is_file($bpFile)) {
                     continue;
@@ -461,7 +470,14 @@ class ImportStatamic extends Command
         foreach (glob($this->src.'/content/taxonomies/*.yaml') ?: [] as $configFile) {
             $handle = pathinfo($configFile, PATHINFO_FILENAME);
             $config = Statamic::readYaml($configFile);
-            $bpHandle = (array) ($config['blueprints'] ?? [$handle]);
+            $bpHandles = (array) ($config['blueprints'] ?? []);
+            if ($bpHandles === []) {
+                $bpHandles = array_map(
+                    fn ($f) => pathinfo($f, PATHINFO_FILENAME),
+                    glob($this->src."/resources/blueprints/taxonomies/{$handle}/*.yaml") ?: []
+                );
+            }
+            $bpHandle = $bpHandles === [] ? [$handle] : $bpHandles;
             $taxonomy = Taxonomy::query()->updateOrCreate(
                 ['handle' => $handle],
                 [
@@ -475,8 +491,11 @@ class ImportStatamic extends Command
                 ]
             );
 
-            // Re-runnable: replace existing terms of this taxonomy.
-            Term::query()->where('taxonomy_id', $taxonomy->id)->delete();
+            // Re-runnable: replace existing terms of this taxonomy. Terms are
+            // soft-deleted, so translations must go first or the unique
+            // (taxonomy_id, locale, slug) key collides on re-import.
+            \Sunrice\Models\TermTranslation::query()->where('taxonomy_id', $taxonomy->id)->delete();
+            Term::query()->where('taxonomy_id', $taxonomy->id)->forceDelete();
             $this->termMap = collect($this->termMap)->filter(
                 fn ($id, $key) => ! str_starts_with((string) $key, $handle.'/')
             )->all();

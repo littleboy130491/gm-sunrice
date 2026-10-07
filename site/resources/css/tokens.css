@@ -1,0 +1,60 @@
+:root {
+   --text-10xl: 80px;
+    --focus-ring-width: 2px;
+    --focus-ring-offset: 2px;
+
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    --leading-tight: 0.95;
+    --leading-snug: 1.1;
+    --leading-normal: 1.45;
+    --leading-relaxed: 1.65;
+    --leading-loose: 1.8;
+
+    --tracking-tightest: -0.04em;
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.02em;
+    --tracking-wider: 0.08em;
+
+    --measure-narrow: 48ch;
+    --measure: 65ch;
+    --measure-wide: 75ch;
+
+    /*spacing*/
+    --space-1: 0.25rem;   /* 4   */
+    --space-1-5: 0.375rem;/* 6   */
+    --space-2: 0.5rem;    /* 8   */
+    --space-3: 0.75rem;   /* 12  */
+    --space-4: 1rem;      /* 16  */
+    --space-5: 1.5rem;    /* 24  */
+    --space-6: 2rem;      /* 32  */
+    --space-7: 3rem;      /* 48  */
+    --space-8: 4rem;      /* 64  */
+    --space-9: 6rem;      /* 96  */
+    --space-10: 8rem;     /* 128 */
+    --space-11: 12rem;    /* 192 */
+    --space-12: 16rem;    /* 256 */
+
+    /* SHADOWS — restrained ----------------------- */
+    --shadow-subtle: 0 1px 2px rgba(15, 13, 12, 0.04);
+    --shadow-card: 0 8px 24px -8px rgba(15, 13, 12, 0.08);
+    --shadow-lifted: 0 24px 48px -16px rgba(15, 13, 12, 0.12);
+
+
+    /* MOTION — tuned curves ---------------------- */
+    --duration-instant: 100ms;
+    --duration-fast: 200ms;
+    --duration-base: 320ms;
+    --duration-slow: 560ms;
+    --duration-slower: 840ms;
+
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-swift: cubic-bezier(0.4, 0, 0.2, 1);
+
+}

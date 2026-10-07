@@ -1,0 +1,301 @@
+:root {
+     /*color*/
+     --color-bg: #FFFFFF;
+     --color-surface: #F5F5F5;
+     --color-primary: #29A829;
+     --color-accent: #29A829;
+     --color-secondary: #FFC323;
+     --color-heading: #222222;
+     --color-text: #444444;
+     --color-line: #E8E8E8;
+     --color-border: #E4E4E4;
+     --color-link: #29A829;
+     --color-focus: #29A829;
+     --color-bg-button-primary: #29A829;
+     --color-text-button-primary: #FFFFFF;
+     --color-bg-button-secondary: #FFC323;
+     --color-text-button-secondary: #282828;
+
+    /*typography*/
+    --font-display: "Oxanium", sans-serif;
+    --font-body: "Poppins", system-ui, sans-serif;
+    --font-sans: var(--font-body);
+    --font-mono: "JetBrains Mono", monospace; 
+    
+    /*h1*/
+    --font-h1: var(--font-display);
+    --weight-h1: var(--weight-semibold);
+    --text-h1: 4rem;
+    --text-h1-tablet: 2.5rem;
+    --text-h1-mobile: 2.3rem;
+    --leading-h1: var(--leading-tight);
+    --tracking-h1: var(--tracking-tightest);
+    --transform-h1: none;
+    --color-h1: var(--color-heading);
+    --measure-h1: none;
+
+    /*h2*/
+    --font-h2: var(--font-display);
+    --weight-h2: var(--weight-bold);
+    --text-h2: 2.5rem;
+    --text-h2-tablet: 2rem;
+    --text-h2-mobile: 1.8rem;
+    --leading-h2: var(--leading-tight);
+    --tracking-h2: var(--tracking-tight);
+    --transform-h2: none;
+    --color-h2: var(--color-heading);
+    --measure-h2: none;
+
+    /*h3*/
+    --font-h3: var(--font-display);
+    --weight-h3: var(--weight-semibold);
+    --text-h3: 2rem;
+    --text-h3-tablet: 1.7rem;
+    --text-h3-mobile: 1.6rem;
+    --leading-h3: var(--leading-snug);
+    --tracking-h3: var(--tracking-tight);
+    --transform-h3: none;
+    --color-h3: var(--color-heading);
+    --measure-h3: none;
+
+    /*h4*/
+    --font-h4: var(--font-display);
+    --weight-h4: var(--weight-semibold);
+    --text-h4: 1.5rem;
+    --text-h4-tablet: 1.5rem;
+    --text-h4-mobile: 1.5rem;
+    --leading-h4: var(--leading-snug);
+    --tracking-h4: var(--tracking-normal);
+    --transform-h4: none;
+    --color-h4: var(--color-text);
+    --measure-h4: none;
+
+    /*h5*/
+    --font-h5: var(--font-body);
+    --weight-h5: var(--weight-medium);
+    --text-h5: var(--text-md);
+    --text-h5-tablet: var(--text-base);
+    --text-h5-mobile: var(--text-sm);
+    --leading-h5: var(--leading-normal);
+    --tracking-h5: var(--tracking-normal);
+    --transform-h5: none;
+    --color-h5: var(--color-text);
+    --measure-h5: none;
+
+    /*h6*/
+    --font-h6: var(--font-body);
+    --weight-h6: var(--weight-medium);
+    --text-h6: var(--text-base);
+    --text-h6-tablet: var(--text-sm);
+    --text-h6-mobile: var(--text-xs);
+    --leading-h6: var(--leading-normal);
+    --tracking-h6: var(--tracking-wide);
+    --transform-h6: uppercase;
+    --color-h6: var(--color-text);
+    --measure-h6: none;
+
+    /*p*/
+    --font-p: var(--font-body);
+    --weight-p: var(--weight-regular);
+    --text-p: 16px;
+    --text-p-tablet: 14px;
+    --text-p-mobile: 14px;
+    --leading-p: var(--leading-relaxed);
+    --tracking-p: var(--tracking-normal);
+    --transform-p: none;
+    --color-p: var(--color-text);
+    --measure-p: none;
+
+    /*a*/
+    --font-a: inherit;
+    --weight-a: var(--weight-medium);
+    --text-a: inherit;
+    --text-a-tablet: inherit;
+    --text-a-mobile: inherit;
+    --leading-a: inherit;
+    --tracking-a: inherit;
+    --transform-a: none;
+    --color-a: var(--color-link);
+    --measure-a: none;
+
+     /*.subheading*/
+    --font-subheading: var(--font-body);
+    --weight-subheading: var(--weight-regular);
+    --text-subheading: var(--text-lg);
+    --text-subheading-tablet: var(--text-md);
+    --text-subheading-mobile: var(--text-base);
+    --leading-subheading: var(--leading-snug);
+    --tracking-subheading: var(--tracking-normal);
+    --transform-subheading: none;
+    --color-subheading: var(--color-muted);
+    --measure-subheading: 52ch;
+
+    /*.badge*/
+    --font-badge: var(--font-body);
+    --weight-badge: var(--weight-medium);
+    --text-badge: var(--text-xs);
+    --text-badge-tablet: var(--text-xs);
+    --text-badge-mobile: 0.6875rem;
+    --leading-badge: var(--leading-tight);
+    --tracking-badge: var(--tracking-wide);
+    --transform-badge: none;
+    --color-badge: var(--color-text-button-primary);
+    --measure-badge: none;
+    --padding-block-badge: var(--padding-block-button);
+    --padding-block-badge-tablet: var(--padding-block-button-tablet);
+    --padding-block-badge-mobile: var(--padding-block-button-mobile);
+    --padding-inline-badge: var(--padding-inline-button);
+    --padding-inline-badge-tablet: var(--padding-inline-button-tablet);
+    --padding-inline-badge-mobile: var(--padding-inline-button-mobile);
+    --radius-badge: 9999px;
+    --bg-badge: var(--color-primary);
+
+    /*.eyebrow*/
+    --font-eyebrow: var(--font-body);
+    --weight-eyebrow: var(--weight-semibold);
+    --text-eyebrow: var(--text-xs);
+    --text-eyebrow-tablet: var(--text-xs);
+    --text-eyebrow-mobile: 0.6875rem;
+    --leading-eyebrow: var(--leading-normal);
+    --tracking-eyebrow: var(--tracking-wider);
+    --transform-eyebrow: uppercase;
+    --color-eyebrow: var(--color-accent);
+    --measure-eyebrow: none;
+
+     /*button*/
+    --font-button: var(--font-display);
+    --weight-button: var(--weight-semibold);
+    --text-button: var(--text-sm);
+    --text-button-tablet: var(--text-sm);
+    --text-button-mobile: var(--text-sm);
+    --leading-button: var(--leading-normal);
+    --tracking-button: var(--tracking-wide);
+    --transform-button: none;
+    --color-text-button: var(--color-text-button-primary);
+    --bg-button: var(--color-bg-button-primary);
+    --padding-block-button: var(--space-3);
+    --padding-block-button-tablet: var(--space-3);
+    --padding-block-button-mobile: var(--space-2);
+    --padding-inline-button: var(--space-6);
+    --padding-inline-button-tablet: var(--space-5);
+    --padding-inline-button-mobile: var(--space-4);
+    --radius-button: 4px;
+
+    /*layout*/
+    --width-default: 100%;
+    --width-container-max: 1280px;
+    --width-container-tablet: 720px;
+    --padding-block-container: var(--space-8);
+    --padding-inline-container: 24px;
+    --padding-inline-container-tablet: var(--space-4);
+    --padding-inline-container-mobile: var(--space-5);
+
+    /*header*/
+    --bg-header: var(--color-bg);
+    --padding-block-header: var(--space-7);
+
+    /*footer*/
+    --bg-footer: var(--color-bg);
+    --padding-block-footer: var(--space-7);
+
+    /*section*/
+    /* --padding-block-section: var(--space-8); */
+
+    /*cluster*/
+    --gap-cluster: var(--space-4);
+
+    /*stack*/
+    --gap-stack: var(--space-6);
+
+    /*flow*/
+    --flow-space-default: var(--space-5);
+    --flow-space-label-to-heading: var(--space-4);
+    --flow-space-heading-to-p: var(--space-3);
+    --flow-space-p-to-action: var(--space-5);
+    --flow-space-heading-to-action: var(--space-5);
+    --flow-space-img-to-p: var(--space-4);
+    --flow-space-p-to-img: var(--space-4);
+    --flow-space-icon-to-p: var(--space-3);
+    --flow-space-p-to-icon: var(--space-3);
+
+    /*grid*/
+    --gap-grid: var(--space-2);
+
+    /*prose*/
+    --measure-prose: var(--measure);
+    --flow-space-prose: var(--space-5);
+    --flow-space-prose-before-heading: var(--space-7);
+    --flow-space-prose-after-heading: var(--space-3);
+    --padding-inline-prose-list: var(--space-5);
+    --flow-space-prose-list-item: var(--space-2);
+    --padding-inline-prose-blockquote: var(--space-5);
+    --padding-prose-pre: var(--space-4);
+    --flow-space-prose-figcaption: var(--space-2);
+    --margin-block-prose-hr: var(--space-7);
+
+    /*th*/
+    --font-th: var(--font-body);
+    --weight-th: var(--weight-semibold);
+    --text-th: var(--text-xs);
+    --text-th-tablet: var(--text-xs);
+    --text-th-mobile: var(--text-xs);
+    --leading-th: var(--leading-tight);
+    --tracking-th: var(--tracking-wider);
+    --transform-th: uppercase;
+    --color-th: var(--color-muted);
+    --measure-th: none;
+    --align-th: left;
+    --padding-block-th: var(--space-3);
+    --padding-block-th-tablet: var(--space-2);
+    --padding-block-th-mobile: var(--space-2);
+    --padding-inline-th: var(--space-4);
+    --padding-inline-th-tablet: var(--space-3);
+    --padding-inline-th-mobile: var(--space-2);
+    --border-bottom-th: 1px solid var(--color-border);
+    --bg-th: transparent;
+
+    /*table*/
+    --font-table: var(--font-body);
+    --weight-table: var(--weight-regular);
+    --text-table: var(--text-sm);
+    --text-table-tablet: var(--text-xs);
+    --text-table-mobile: var(--text-xs);
+    --leading-table: var(--leading-normal);
+    --tracking-table: var(--tracking-normal);
+    --transform-table: none;
+    --color-table: var(--color-text);
+    --measure-table: none;
+    --border-collapse-table: collapse;
+    --border-spacing-table: 0;
+
+    /*td*/
+    --font-td: var(--font-body);
+    --weight-td: var(--weight-regular);
+    --text-td: var(--text-sm);
+    --text-td-tablet: var(--text-xs);
+    --text-td-mobile: var(--text-xs);
+    --leading-td: var(--leading-normal);
+    --tracking-td: var(--tracking-normal);
+    --transform-td: none;
+    --color-td: var(--color-text);
+    --measure-td: none;
+    --align-td: left;
+    --padding-block-td: var(--space-3);
+    --padding-block-td-tablet: var(--space-2);
+    --padding-block-td-mobile: var(--space-2);
+    --padding-inline-td: var(--space-4);
+    --padding-inline-td-tablet: var(--space-3);
+    --padding-inline-td-mobile: var(--space-2);
+    --border-bottom-td: 1px solid var(--color-border);
+
+    /*thead*/
+    --bg-thead: transparent;
+
+    /*tbody*/
+    --bg-tbody: transparent;
+    --bg-table-row-hover: var(--color-surface);
+
+    /*tfoot*/
+    --bg-tfoot: transparent;
+
+}

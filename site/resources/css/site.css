@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@source "../views";
+@source "../../content";
+
+@layer components {
+    .statamic-form input:not([type="checkbox"]):not([type="hidden"]):not(.sr-only),
+    .statamic-form select,
+    .statamic-form textarea {
+        @apply w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100;
+    }
+
+    .statamic-form input[type="file"] {
+        @apply block w-full text-sm text-zinc-600 file:mr-4 file:rounded-full file:border-0 file:bg-emerald-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-emerald-700 hover:file:bg-emerald-100 dark:text-zinc-400 dark:file:bg-emerald-950/50 dark:file:text-emerald-300;
+    }
+
+    .statamic-form label:has(input[type="checkbox"]) {
+        @apply flex items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300;
+    }
+
+    .statamic-form input[type="checkbox"] {
+        @apply mt-0.5 size-4 rounded border-zinc-300 text-emerald-600 focus:ring-emerald-500 dark:border-zinc-600;
+    }
+}

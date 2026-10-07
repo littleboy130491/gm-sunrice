@@ -77,8 +77,8 @@ menus replace items, structure/globals/forms/settings upsert, assets resume via
 | Importer: menus | Done | 3 menus with nested items |
 | Importer: settings | Done | homepage entry = `beranda` page |
 | E2E check (testing agent) | Done | all routes 200, /cms populated; **fixed**: Laravel 13 `serializable_classes=false` broke sunrice content cache (500s on warm cache) — see FINDINGS #15 |
-| Templates ported | Not started | publish `sunrice-templates` stubs then port statamic `resources/views` → `site/resources/views/sunrice/`; blocks → `sunrice/blocks/{fieldset}.blade.php` |
-| Frontend parity check | Not started | compare rendered pages vs statamic |
+| Templates ported | Done | all 99 statamic Blade views converted → `site/resources/views/`; block partials → `sunrice/blocks/*.blade.php`; full-route sweep: **370/370 URLs → 200** |
+| Frontend parity check | In progress | routes all render; visual diff vs original statamic site not yet compared side-by-side |
 | Translations `id`→`en` | Not started | set `sunrice.locales.available=[id,en]`; use `php artisan sunrice:translate` (needs `SUNRICE_TRANSLATE_DRIVER`/`MODEL` + API key) or translate in admin, then mark Ready |
 | Users | Not started | statamic `users/` not migrated yet — decide if needed |
 
@@ -90,6 +90,23 @@ menus replace items, structure/globals/forms/settings upsert, assets resume via
 - Statamic entry `id:` (arbitrary string/uuid) → lookup table during import for `entry::` references and nav items.
 - SEO: statamic `seo:` frontmatter → translation `seo` JSON; `@seo:title`/`@seo:featured_image` sentinels resolved to the field value.
 - Pages keep flat `/{slug}` routes (Sunrice v1 has no nested page URLs — see FINDINGS).
+- Templates live under `site/resources/views/`: pages at root level (`home.blade.php`,
+  `{slug}.blade.php` by entry template), collection/taxonomy shows under
+  `sunrice/{collection}/show.blade.php` + `sunrice/taxonomies/{taxonomy}/{index,show}.blade.php`,
+  flexible blocks under `sunrice/blocks/{key}.blade.php` (`default.blade.php` = fallback).
+  Site helpers (`app/helpers.php`): `gm_entry`, `gm_entries`, `gm_terms`, `gm_term`,
+  `gm_field_label`, `gm_asset_url`, `gm_link_url`.
+- Statamic `sections` → Sunrice `Items` of `Block` objects (`->type`, `->key`, `->get()`/
+  `__get`). Repeater/group **rows hydrate as plain PHP arrays** → `$row['field']`.
+  `Entry->get(handle)` for blueprint fields; `MenuNode` has `->label/->url/->children`
+  but NO ArrayAccess; hydrated `link` fields are `['url','label','new_tab']` arrays;
+  `Asset->url()` is a method. Views receive `$locale`, `$pageType`, `$entry`, `$term`,
+  `$collection`, `$taxonomy`; inside components use
+  `request()->attributes->get('sunrice.page')` (view data does not propagate).
+- Forms render via `<x-sunrice::form handle="contact|career_apply">`; slot gets
+  `$component->form->fields`, `$component->error/old/success`. Inputs must be named
+  `data[handle]`. Published `vendor/sunrice/components/form.blade.php` drops the
+  package's default submit button (templates bring their own).
 
 ## How to resume (for the next agent)
 
@@ -98,6 +115,6 @@ menus replace items, structure/globals/forms/settings upsert, assets resume via
 3. Importer: `site/app/StatamicImport/` (Statamic parser, FieldMapper, BardToHtml, ValueConverter) + `site/app/Console/Commands/ImportStatamic.php`.
 4. Full import: `php -d upload_max_filesize=64M -d post_max_size=64M artisan statamic:import --fresh`
    (`--skip-assets` while iterating on content; assets resume via manifest file anyway).
-5. Next: template porting — publish `sunrice-templates` stubs, port statamic `resources/views`
-   → `site/resources/views/sunrice/`; block partials → `sunrice/blocks/{fieldset}.blade.php`.
+5. Template porting is done; remaining: visual parity review vs the original statamic
+   site (spot-check pages, fix markup/CSS drift).
 6. Then `id`→`en` translations (`sunrice:translate` needs driver + API key, or manual in /cms).

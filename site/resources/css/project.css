@@ -1,0 +1,1564 @@
+/* Heading Uppercase */
+h1, h2 {
+   text-transform: uppercase;
+   font-weight: 600;
+}
+
+
+
+/* Background Halaman */
+body.background-grey {
+   background-color: var(--color-surface);
+}
+
+
+
+/* Social Media Icon */
+.social-icon {
+    background-color: var(--color-primary);
+    -webkit-mask: var(--icon-url) no-repeat center / contain;
+    mask: var(--icon-url) no-repeat center / contain;
+    transition: background-color 0.2s;
+}
+
+.social-icon-white {
+   background-color: white;
+   -webkit-mask: var(--icon-url) no-repeat center / contain;
+   mask: var(--icon-url) no-repeat center / contain;
+   transition: background-color 0.2s;
+}
+
+.social-icon-grey {
+   background-color: var(--color-text);
+   -webkit-mask: var(--icon-url) no-repeat center / contain;
+   mask: var(--icon-url) no-repeat center / contain;
+   transition: background-color 0.2s;
+}
+
+.social-icon:hover,
+.social-icon-white:hover,
+.social-icon-grey:hover {
+    background-color: var(--color-secondary);
+}
+
+
+
+/* Hero Banner Overlay - HOME */
+.hero-banner-overlay {
+    background: radial-gradient(
+        72.36% 100% at 50% 0%,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.7) 57.08%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
+
+
+
+/* Hero Banner Overlay - ALL PAGE */
+.heropage-overlay {
+   background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.66) 2.88%, rgba(0, 0, 0, 0.00) 57.69%);
+}
+
+
+
+/* Dot Slider Hero Banner - HOME */
+.hero-slider-dot {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.35);
+    transition-property: background-color, opacity;
+    transition-duration: var(--hero-slider-transition-duration, 500ms);
+    transition-timing-function: ease-out;
+    margin-bottom: 60px;
+}
+
+.hero-slider-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.hero-slider-dot.is-current {
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-slider-dot.is-active::after {
+    animation: hero-slider-dot-progress var(--hero-slider-autoplay-duration, 5000ms) linear forwards;
+}
+
+[data-hero-slider].is-autoplay-paused .hero-slider-dot.is-active::after {
+    animation-play-state: paused;
+}
+
+@keyframes hero-slider-dot-progress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
+
+/* Hero banner - SINGLE PRODUK */
+.heropage-product-overlay {
+   background: linear-gradient(180deg, #000 3.04%, rgba(0, 0, 0, 0.50) 59.98%, rgba(0, 0, 0, 0.00) 105.31%);
+}
+
+
+
+/* Judul informasi - KONTAK */
+.title-display {
+   font-family: var(--font-display);
+   font-weight: 600;
+}
+
+
+
+/* Reverse layout - PURNA JUAL */
+@media (min-width: 1024px) {
+    .reverse-div > div:nth-child(2n+1) {
+        flex-direction: row-reverse !important;
+    }
+}
+
+
+
+/* Button filter active - DEALER MAPS */
+.dealer-cat-btn.active {
+    color: white !important;
+    background: var(--color-primary) !important;
+}
+
+/* Empty search feedback - DEALER MAPS */
+.dealer-search-empty {
+    margin: 0;
+    padding: 0.875rem 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.dealer-search-empty.hidden {
+    display: none;
+}
+
+
+
+
+/* Sea colour behind the flat vector land layer - DEALER MAPS */
+/* !important because leaflet.css is imported unlayered and its
+   `.leaflet-container { background: #ddd }` otherwise beats this layered rule. */
+#dealer-map.leaflet-container {
+   background: #D5E8EB !important;
+}
+
+#dealer-map.leaflet-container.is-satellite {
+   background: none !important;
+}
+
+/* Marker icon - DEALER MAPS */
+.dealer-map-marker {
+    object-fit: contain;
+}
+
+@media(max-width: 768px) {
+   #dealer-map {
+      border-radius: 16px !important;
+   }
+}
+
+
+
+/* Layer toggle Peta/Satelit - DEALER MAPS */
+.leaflet-layer-toggle {
+    display: flex;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 16px;
+}
+
+.leaflet-layer-toggle .layer-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+    font-weight: medium;
+    color: #aaa;
+    background: white;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.leaflet-layer-toggle .layer-btn + .layer-btn {
+    border-left: 1px solid #ddd;
+}
+
+.leaflet-layer-toggle .layer-btn.active {
+    color: #111;
+}
+
+
+
+/* Popup maps - DEALER MAPS */
+.leaflet-popup-close-button {
+   display: none !important;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+   background: var(--color-primary) !important;
+   box-shadow: none !important;
+}
+
+.leaflet-popup-content {
+   margin: 11px !important;
+   border-radius: 16px !important;
+   width: auto;
+}
+
+.dealer-popup {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   min-width: 250px;
+   max-width: 360px;
+}
+
+.popup-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   gap: 24px;
+   color: white;
+}
+
+.dealer-popup-city {
+   font-family: var(--font-display);
+   font-size: 1.3em;
+   font-weight: 600;
+   white-space: nowrap;
+}
+
+.dealer-popup-category {
+   font-family: var(--font-body);
+   text-transform: uppercase;
+   line-height: 1.25;
+   text-align: right;
+   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+   .dealer-popup {
+      min-width: 220px;
+   }
+
+   .popup-header {
+      gap: 16px;
+   }
+}
+
+.wrap-popup-dealer {
+   padding: 12px;
+   background: white;
+   border-radius: 8px;
+   font-family: var(--font-body);
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.dealer-popup-company {
+   font-weight: 600;
+   text-transform: uppercase;
+}
+
+.dealer-popup-address {
+   color: var(--color-text);
+   font-size: 0.9em;
+   margin-top: -14px;
+}
+
+.dealer-popup-contacts {
+   display: flex;
+   flex-direction: column;
+   gap: 4px;
+}
+
+.dealer-popup-contacts a {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   color: var(--color-text) !important;
+}
+
+.dealer-contact-icon {
+   width: 12px;
+   height: 12px;
+   flex-shrink: 0;
+   color: var(--color-text);
+}
+
+.dealer-popup-gmaps {
+   color: var(--color-text) !important;
+   text-decoration: underline;
+}
+
+
+
+/* Background Grayscale */
+.image-grayscale {
+   filter: grayscale(100%);
+}
+
+
+
+/* Overlay Background Direksi - MANAJEMEN */
+.overlay-bg-management {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    z-index: 2;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(245, 245, 245, 0.80) 0%, rgba(205, 205, 205, 0.80) 100%);
+}
+
+
+
+/* Glass Effect - TENTANG KAMI */
+.glass {
+   background: rgba(255, 255, 255, 0.64);
+   backdrop-filter: blur(20px);
+   border: 1px solid var(--color-surface);
+   border-radius: 12px;
+}
+
+
+
+/* Background Overlay Visi Misi - TENTANG KAMI */
+.overlay-visimisi {
+  position: relative;
+}
+
+.overlay-visimisi::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(149deg, #F5F5F5 0%, rgba(245, 245, 245, 0.00) 44.58%), linear-gradient(180deg, #F5F5F5 0%, rgba(245, 245, 245, 0.86) 14.47%, rgba(245, 245, 245, 0.68) 32.38%, rgba(245, 245, 245, 0.00) 66.81%);
+}
+
+
+
+/* Misson Number - TENTANG KAMI */
+.mission-list {
+   font-family: var(--font-body) !important;
+   font-weight: 500;  
+}
+
+.mission-list-content ol {
+    list-style: none;
+    counter-reset: mission;
+    display: flex;
+    flex-direction: column;
+}
+
+.mission-list-content ol li {
+    counter-increment: mission;
+    display: flex;
+    gap: 5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid #FFFFFF90;
+}
+
+.mission-list-content ol li:last-child {
+    border-bottom: none;
+}
+
+.mission-list-content ol li::before {
+    content: counter(mission, decimal-leading-zero) ".";
+    flex-shrink: 0;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-display);
+}
+
+
+
+/* Misson Number - TENTANG KAMI (Tablet) */
+@media (max-width: 768px) {
+   .mission-list-content ol li {
+      gap: 1.2rem;
+   }
+
+   .mission-list-content ol li::before {
+      font-size: 1rem;
+   }
+}
+
+
+
+/* Misson Number - TENTANG KAMI (Mobile) */
+@media (max-width: 640px) {
+   .mission-list-content ol li {
+      gap: 1rem;
+   }
+
+   .mission-list-content ol li::before {
+      font-size: 1rem;
+   }
+}
+
+
+
+/* Sertifikat - TENTANG KAMI */
+@media (min-width: 1024px) {
+   .h3-cust-about {
+      font-size: 1.5rem;
+   }
+}
+
+
+
+/* Languange Header Transparant */
+.glink {
+   background: transparent;
+   font-weight: 500 !important;
+   border-radius: 100px;
+   width: 40px;
+   height: 40px;
+   display: flex;
+   justify-content: center !important;
+   align-items: center !important;
+   color: white;
+}
+
+.glink:hover {
+   background: white;
+   color: black;
+}
+
+.glink.gt-current-lang {
+   background: white;
+   color: black;
+}
+
+.gtranslate_wrapper {
+   display: flex;
+   flex-direction: row;
+   gap: 4px;
+}
+
+
+
+/* Languange Header Single */
+#single-header .glink {
+    color: black;
+    background: transparent;
+}
+
+#single-header .glink:hover,
+#single-header .glink.gt-current-lang {
+    background: var(--color-surface);
+    color: black;
+}
+
+
+
+/* Languange Header Flyout */
+#mobile-menu .glink {
+    color: black;
+    background: transparent;
+    font-size: 0.8rem;
+}
+
+#mobile-menu .glink:hover,
+#mobile-menu .glink.gt-current-lang {
+    background: var(--color-secondary);
+    color: black;
+}
+
+
+
+/* Flyout */
+@media (max-width: 768px) {
+   #mobile-menu-panel ul {
+      margin: 0
+   }
+}
+
+
+
+/* Popup Form Career */
+.career-popup {
+    width: min(90%, 900px);
+    max-height: 90vh;
+    margin: auto;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0;
+    background: var(--color-surface);
+    overflow-y: auto;
+}
+
+.career-popup::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.career-popup-inner {
+    position: relative;
+}
+
+body:has(dialog[open].career-popup) {
+    overflow: hidden;
+}
+
+.career-form-input {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: border-color 0.2s ease;
+}
+
+.career-form-input::placeholder {
+    opacity: 1;
+    color: var(--color-body);
+}
+
+@media(max-width: 768px) {
+   .career-form-input::placeholder {
+      font-size: 0.85rem;
+   }
+}
+
+.career-form-input:focus,
+.career-form-file input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+/* Heading Size - SKIN BLOG */
+.custom-heading-blog h2,
+.custom-heading-blog span {
+   font-size: 1.5rem;
+   text-transform: none;
+}
+
+
+
+/* Link Underline */
+a {
+    text-decoration: none;
+}
+
+
+
+/* Blockquote */
+blockquote {
+   margin: 1rem 0 1rem 0;
+   padding: 1.2rem;
+   background-color: var(--color-surface);
+   border-left: 2px solid var(--color-primary);
+}
+
+
+
+/* Swiper base */
+.swiper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.swiper-wrapper {
+    display: flex;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    transition-property: transform;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+/* Gallery Thumbnail Single Blog & Single Product */
+.gallery-thumbs .swiper-slide {
+    width: auto;
+}
+
+.features-prev.swiper-button-lock,
+.features-next.swiper-button-lock {
+    display: none;
+}
+
+.features-prev.swiper-button-disabled,
+.features-next.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+}
+
+
+
+/* Heading Single Produk dan Blog */
+.heading-single {
+   font-size: 3rem !important;
+   line-height: 3.5rem !important;
+}
+
+
+@media (max-width: 768px) {
+   .heading-single  {
+      font-size: 2rem !important;
+      line-height: 2.3rem !important;
+   }
+}
+
+@media (max-width: 640px) {
+   .heading-single  {
+      font-size: 1.8rem !important;
+      line-height: 2.1rem !important;
+   }
+}
+
+
+
+/* Spesifikasi Heading Single Produk */
+.specifi-title {
+   font-family: var(--font-display) !important;
+   font-weight: 700 !important;
+   letter-spacing: -0.5px;
+   font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+   .specifi-title {
+      font-size: 1rem;
+   }
+}
+
+
+
+/* Share icons */
+#share-icon img {
+    filter: invert(64%) sepia(100%) saturate(400%) hue-rotate(65deg) brightness(69%);
+    transition: filter 0.2s;
+}
+
+#share-icon a:hover img {
+    filter: invert(65%) sepia(100%) saturate(600%) brightness(103%);
+}
+
+
+
+/* Industri Accordion */
+:root {
+   interpolate-size: allow-keywords;
+}
+
+.industry-item::details-content {
+   block-size: 0;
+   overflow: hidden;
+   transition: block-size 0.4s ease, content-visibility 0.4s allow-discrete;
+}
+
+.industry-item[open]::details-content {
+   block-size: auto;
+}
+
+
+
+/* Section About - HOME */
+.overlay-section-about {
+   position: relative;
+}
+
+.overlay-section-about::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 1;
+   pointer-events: none;
+   background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 95%);
+}
+
+
+
+/* Background Blur */
+.blur-cus {
+   backdrop-filter: blur(4px);
+}
+
+
+
+/* Popup Website */
+.site-popup {
+    width: min(90%, 600px);
+    max-height: 90vh;
+    margin: auto;
+    border: none;
+    border-radius: 1rem;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+.site-popup::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.site-popup-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+body:has(dialog[open].site-popup) {
+    overflow: hidden;
+}
+
+
+
+/* Section services - HOME */
+.overlay-section-services {
+   position: relative;
+}
+
+.overlay-section-services::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 1;
+   pointer-events: none;
+   background: radial-gradient(65.2% 32.34% at 50% 25.2%, rgba(255, 255, 255, 0.92) 21.28%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 95.84%);
+}
+
+
+
+/* Blog Highligth */
+.blog-style .skin-blog-cust {
+   background: var(--color-surface) !important;
+}
+
+@media (min-width: 1024px) {
+   .blog-style .skin-blog-cust h2 {
+      font-size: 2rem !important;
+   }
+
+   .blog-style .skin-blog-cust .img-high {
+      height: auto;
+   }
+
+   .blog-style .skin-blog-cust img {
+      height: 370px !important;
+   }
+}
+
+@media (max-width: 768px) {
+   .blog-style .flex-cust {
+      display: flex !important;
+      flex-direction: row !important;
+   }
+
+   .blog-style .img-high {
+      width: 50% !important;
+   }
+
+   .blog-style .skin-blog-cust img {
+      height: 260px !important;
+   }
+}
+
+@media (max-width: 640px) {
+   .blog-style .flex-cust {
+      display: flex !important;
+      flex-direction: column !important;
+   }
+
+   .blog-style .img-high {
+      width: 100% !important;
+   }
+
+   .blog-style .skin-blog-cust img {
+      height: 260px !important;
+   }
+}
+
+
+
+/* Sticky Header (transparent header) */
+.header-fixed.is-sticky {
+   position: fixed;
+   background: white;
+   box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+   animation: header-slide-down 0.3s ease-out;
+   z-index: 9999;
+}
+
+@keyframes header-slide-down {
+   from {
+      transform: translateY(-100%);
+   }
+   to {
+      transform: translateY(0);
+   }
+}
+
+.header-fixed.is-sticky :is(nav a, nav div, nav span) {
+   color: black;
+}
+
+.header-fixed.is-sticky nav a:hover,
+.header-fixed.is-sticky nav a:hover span,
+.header-fixed.is-sticky nav li > div:hover,
+.header-fixed.is-sticky nav li > div:hover span {
+   color: var(--color-primary) !important;
+}
+
+.header-fixed.is-sticky #menu-toggle span {
+   background: black !important;
+}
+
+@media (min-width: 1024px) {
+   .header-fixed.is-sticky nav ul ul {
+      background: white !important;
+      backdrop-filter: none !important;
+   }
+
+   .header-fixed.is-sticky nav ul ul a {
+      color: black !important;
+   }
+
+   .header-fixed.is-sticky nav ul ul a:hover {
+      color: var(--color-primary) !important;
+   }
+}
+
+.header-fixed.is-sticky .glink {
+   color: black;
+}
+
+.header-fixed.is-sticky .glink:hover,
+.header-fixed.is-sticky .glink.gt-current-lang {
+   background: var(--color-surface);
+   color: black;
+}
+
+#single-header.is-sticky {
+   position: fixed;
+   inset-inline: 0;
+   top: 0;
+   width: 100%;
+   background: white;
+   box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+   animation: header-slide-down 0.3s ease-out;
+   z-index: 9999;
+}
+
+#single-header.is-sticky .container > div {
+   border-bottom: none !important;
+}
+
+
+
+/* Page Preparation */
+.text-cust p {
+   color: white !important;
+}
+
+
+
+/* Scroll to Top */
+#scroll-to-top {
+   position: fixed;
+   right: 24px;
+   bottom: 24px;
+   z-index: 1000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 40px;
+   height: 40px;
+   border: none;
+   border-radius: 100px;
+   background: var(--color-heading);
+   color: white;
+   cursor: pointer;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   opacity: 0;
+   visibility: hidden;
+   transform: translateY(16px);
+   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+}
+
+#scroll-to-top.is-visible {
+   opacity: 1;
+   visibility: visible;
+   transform: translateY(0);
+}
+
+#scroll-to-top:hover {
+   background: black;
+}
+
+@media (max-width: 640px) {
+   #scroll-to-top {
+      right: 16px;
+      bottom: 16px;
+      width: 40px;
+      height: 40px;
+   }
+}
+
+
+
+/* Selector */
+::selection {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+
+
+/* Comparison image loading skeleton */
+.comparison-image-wrap {
+    position: relative;
+}
+
+.comparison-image-wrap.is-loading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    background: linear-gradient(
+        100deg,
+        rgba(0, 0, 0, 0.04) 30%,
+        rgba(0, 0, 0, 0.08) 50%,
+        rgba(0, 0, 0, 0.04) 70%
+    );
+    background-size: 200% 100%;
+    animation: comparison-shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes comparison-shimmer {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+
+
+/* Form Kontak */
+.contact-form-input {
+  font-family: var(--font-body);
+  color: var(--color-body);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form-input::placeholder {
+  opacity: 1;
+  color: var(--color-body);
+}
+
+.contact-form-input:focus {
+  outline: none;
+}
+
+
+
+/* Dropdown Select */
+.cmp-dd-native {
+  display: none;
+}
+
+.cmp-dd {
+  position: relative;
+}
+
+.cmp-dd-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--color-body);
+  text-align: left;
+  transition: border-color 0.2s ease;
+}
+
+.cmp-dd-button.comparison-select {
+  font-family: var(--font-display);
+  font-weight: bold;
+}
+
+.cmp-dd-button:focus {
+  outline: none;
+}
+
+.cmp-dd-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cmp-dd-button.is-placeholder {
+  font-weight: normal;
+  font-family: var(--font-body);
+}
+
+.cmp-dd-caret {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.2s ease;
+}
+
+@media(max-width: 768px) {
+   .cmp-dd-caret {
+      width: 20px;
+      height: 20px;
+   }
+
+   .cmp-dd-button {
+      padding: 14px !important;
+      border-radius: 8px;
+   }
+}
+
+.cmp-dd.is-open .cmp-dd-caret {
+  transform: rotate(180deg);
+}
+
+.cmp-dd-panel {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: white;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 0.3rem;
+  max-height: 45vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cmp-dd-panel[hidden] {
+  display: none;
+}
+
+.cmp-dd-group {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-body);
+  padding: 0.5rem 0.6rem 0.25rem;
+}
+
+.cmp-dd-option {
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  color: var(--color-body);
+  background-color: white;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+}
+
+.cmp-dd-option:hover {
+  background-color: var(--color-surface);
+}
+
+.cmp-dd-option.is-selected {
+  background-color: var(--color-surface);
+}
+
+.cmp-dd-option[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+
+
+/* Flyout Menu */
+#flyout-menu li,
+#flyout-menu li a {
+   font-size: 0.9rem;
+}
+
+
+
+/* Konten single posts custom */
+.content-custom h2 {
+   font-size: 1.8rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h3 {
+   font-size: 1.6rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h4 {
+   font-size: 1.4rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h5 {
+   font-size: 1.3rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h6 {
+   font-size: 1.2rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom ul,
+.content-custom ol {
+   margin-block: 0;
+   margin-inline-start: 1.3rem;
+}
+
+.content-custom.content-custom > * {
+   margin-top: 1.5rem;
+   margin-bottom: 0;
+}
+
+.content-custom.content-custom > *:first-child {
+   margin-top: 0;
+}
+
+.content-custom.content-custom > :is(h1, h2, h3, h4, h5, h6) {
+   margin-top: 2.5rem;
+}
+
+.content-custom.content-custom > :is(h1, h2, h3, h4, h5, h6):first-child {
+   margin-top: 0;
+}
+
+.content-custom.content-custom > :is(h1, h2, h3, h4, h5, h6) + * {
+   margin-top: 0.75rem;
+}
+
+.content-custom img {
+   border-radius: 1rem;
+   margin: 0;
+}
+
+.content-custom figure {
+   margin: 0;
+}
+
+.content-custom figure img {
+   margin: 0;
+}
+
+.content-custom figcaption {
+   margin-top: 0.75rem;
+   font-family: var(--font-body);
+}
+
+.content-custom li :is(h2, h3, h4, h5, h6) {
+   margin-top: 0;
+   margin-bottom: 0;
+}
+
+
+/* Konten single posts custom (Tablet) */
+@media (max-width: 768px) {
+   .content-custom h2 {
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h4 {
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h5 {
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h6 {
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+}
+
+
+
+/* Konten single posts custom (Mobile) */
+@media (max-width: 640px) {
+   .content-custom h2 {
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h3 {
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h4 {
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h5 {
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h6 {
+      font-size: 1.15rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+}
+
+
+
+/* Floating WhatsApp */
+#floating-whatsapp {
+    position: fixed;
+    bottom: 24px;
+    z-index: 1000;
+}
+
+#floating-whatsapp[data-position="left"] {
+    left: 24px;
+}
+
+#floating-whatsapp[data-position="right"] {
+    right: 24px;
+}
+
+.floating-whatsapp-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#floating-whatsapp[data-position="left"] .floating-whatsapp-toggle {
+    flex-direction: row-reverse;
+}
+
+.floating-whatsapp-circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: #00D24A;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.floating-whatsapp-icon,
+.floating-whatsapp-close {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.22, 1.2, 0.4, 1);
+}
+
+.floating-whatsapp-icon img,
+.floating-whatsapp-icon svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+/* Icon upload dipaksa putih */
+.floating-whatsapp-icon img {
+    filter: brightness(0) invert(1);
+}
+
+.floating-whatsapp-close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-close {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+.floating-whatsapp-bubble {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    background: #f4f5f7;
+    color: var(--color-heading, #222);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+#floating-whatsapp[data-position="left"] .floating-whatsapp-bubble {
+    transform: translateX(-8px);
+}
+
+.floating-whatsapp-toggle:hover .floating-whatsapp-bubble,
+.floating-whatsapp-toggle:focus-visible .floating-whatsapp-bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-bubble {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.floating-whatsapp-panel {
+    position: absolute;
+    bottom: 70px;
+    width: min(360px, calc(100vw - 48px));
+    max-height: min(70vh, 620px);
+    overflow-y: auto;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    transform-origin: bottom right;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(16px) scale(0.94);
+    transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.22, 1.2, 0.4, 1), visibility 0.28s ease;
+}
+
+#floating-whatsapp[data-position="left"] .floating-whatsapp-panel {
+    left: 0;
+    transform-origin: bottom left;
+}
+
+#floating-whatsapp[data-position="right"] .floating-whatsapp-panel {
+    right: 0;
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.floating-whatsapp-panel-head {
+    padding: 18px 20px;
+    background: var(--color-primary);
+}
+
+.floating-whatsapp-panel-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.floating-whatsapp-panel-desc {
+    margin: 4px 0 0;
+    font-size: 0.7rem;
+    line-height: 1.45;
+    color: #fff;
+}
+
+.floating-whatsapp-panel-body {
+    padding: 16px;
+}
+
+.floating-whatsapp-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.floating-whatsapp-list li {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-list li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-list li:nth-child(1) {
+    transition-delay: 0.08s;
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-list li:nth-child(2) {
+    transition-delay: 0.13s;
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-list li:nth-child(3) {
+    transition-delay: 0.18s;
+}
+
+#floating-whatsapp.is-open .floating-whatsapp-list li:nth-child(n + 4) {
+    transition-delay: 0.23s;
+}
+
+.floating-whatsapp-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #f4f5f7;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.floating-whatsapp-list a:hover {
+    background: #EEE;
+}
+
+.floating-whatsapp-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #fff;
+    color: var(--color-primary);
+}
+
+.floating-whatsapp-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.floating-whatsapp-meta {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.floating-whatsapp-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-heading, #222);
+    line-height: 1.3;
+}
+
+.floating-whatsapp-role {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.7rem;
+    color: #8a8f98;
+    line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    #floating-whatsapp .floating-whatsapp-panel,
+    #floating-whatsapp .floating-whatsapp-list li,
+    #floating-whatsapp .floating-whatsapp-icon,
+    #floating-whatsapp .floating-whatsapp-close,
+    #floating-whatsapp .floating-whatsapp-circle {
+        transition: none;
+        transform: none;
+    }
+}
+
+@media (max-width: 640px) {
+    #floating-whatsapp {
+        bottom: 16px;
+    }
+
+    #floating-whatsapp[data-position="left"] {
+        left: 16px;
+    }
+
+    #floating-whatsapp[data-position="right"] {
+        right: 16px;
+    }
+}
