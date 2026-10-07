@@ -131,6 +131,8 @@ return [
     |
     */
 
-    'serializable_classes' => false,
+    // Sunrice's content cache stores RouteMatch/MenuNode/Eloquent objects —
+    // false (Laravel 13 default) makes them unserialize as __PHP_Incomplete_Class.
+    'serializable_classes' => env('CACHE_SERIALIZABLE_CLASSES', true),
 
 ];

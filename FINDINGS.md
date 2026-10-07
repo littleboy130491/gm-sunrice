@@ -69,3 +69,15 @@ Problems, gaps and judgement calls discovered during the migration. Add entries 
 14. **Asset resume manifest.** `site/storage/app/statamic-asset-map.json` maps
     statamic rel-path → asset id; deleted on `--fresh`. Lets `--only=entries` runs
     resolve `asset::`/`assets::` references without re-uploading.
+
+15. **Laravel 13 `cache.serializable_classes=false` breaks sunrice.** The Laravel 13
+    skeleton default refuses to unserialize objects from the database cache store —
+    sunrice's `ContentCache` stores `RouteMatch`/`MenuNode`/Eloquent objects, so
+    every route-matched URL 500s once the cache is warm. Fixed in
+    `site/config/cache.php` (`serializable_classes` → env, default `true`).
+    A proper fix belongs in sunrice-cms (cache scalars) — follow-up task there.
+
+16. **Imported HTML no longer bakes APP_URL.** `Asset::url()` returns absolute
+    `http://localhost:8000/storage/...`; link fields and bard images now store the
+    relative `/storage/...` path so content survives a domain change. Bard images
+    primarily render via `<img data-asset-id>` resolved server-side anyway.

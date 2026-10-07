@@ -73,9 +73,10 @@ menus replace items, structure/globals/forms/settings upsert, assets resume via
 | Importer: taxonomies/terms | Done | 8 taxonomies imported |
 | Importer: globals | Done | 13 sets imported |
 | Importer: forms | Done | `contact`, `career_apply` with real fields from `resources/blueprints/forms/` |
-| Importer: entries | Done | 399 entries (pages 13 incl. tree, posts 310, products 26, dealers 42, careers 4); flexible blocks + links/terms/assets resolved |
+| Importer: entries | Done | 399 entries (pages 13 incl. tree, posts 310, products 26, dealers 42, careers 4); flexible blocks + links/terms/assets resolved; asset URLs stored relative |
 | Importer: menus | Done | 3 menus with nested items |
 | Importer: settings | Done | homepage entry = `beranda` page |
+| E2E check (testing agent) | Done | all routes 200, /cms populated; **fixed**: Laravel 13 `serializable_classes=false` broke sunrice content cache (500s on warm cache) — see FINDINGS #15 |
 | Templates ported | Not started | publish `sunrice-templates` stubs then port statamic `resources/views` → `site/resources/views/sunrice/`; blocks → `sunrice/blocks/{fieldset}.blade.php` |
 | Frontend parity check | Not started | compare rendered pages vs statamic |
 | Translations `id`→`en` | Not started | set `sunrice.locales.available=[id,en]`; use `php artisan sunrice:translate` (needs `SUNRICE_TRANSLATE_DRIVER`/`MODEL` + API key) or translate in admin, then mark Ready |

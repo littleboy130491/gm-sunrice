@@ -119,7 +119,7 @@ class ImportStatamic extends Command
             assetUrlFor: function (string $id): string {
                 $asset = Asset::query()->find((int) $id);
 
-                return $asset?->url() ?? '#';
+                return $asset ? static::relativeUrl($asset->url()) : '#';
             },
             warn: function (string $msg, string $ctx): void {
                 $this->warnings[] = $ctx === '' ? $msg : "{$msg} (field {$ctx})";
@@ -298,7 +298,7 @@ class ImportStatamic extends Command
         if ($id !== null) {
             $asset = Asset::query()->find($id);
 
-            return ['id' => $id, 'url' => $asset?->url() ?? '#'];
+            return ['id' => $id, 'url' => $asset ? static::relativeUrl($asset->url()) : '#'];
         }
         if (preg_match('#^https?://#', $src)) {
             return ['id' => null, 'url' => $src];
@@ -306,6 +306,15 @@ class ImportStatamic extends Command
         $this->warnings[] = "bard image not found: {$src}";
 
         return ['id' => null, 'url' => '#'];
+    }
+
+    /**
+     * Strip the origin from an asset URL so imported HTML doesn't bake in
+     * the current APP_URL (breaks when the site moves hosts).
+     */
+    private static function relativeUrl(string $url): string
+    {
+        return (string) preg_replace('#^https?://[^/]+#i', '', $url);
     }
 
     // ------------------------------------------------------------------
