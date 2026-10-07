@@ -1,0 +1,40 @@
+@layer tokens, base, typography, layout, components, settings, project;
+
+@import url("./tokens.css") layer(tokens);
+@import url("./base.css") layer(base);
+@import url("./typography.css") layer(typography);
+@import url("./layout.css") layer(layout);
+@import url("./components.css") layer(components);
+@import url("./settings.css") layer(settings);
+@import url("./project.css") layer(project);
+
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+@import "swiper/css";
+@import "swiper/css/navigation";
+
+@custom-variant hover (&:hover);
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@layer utilities {
+   .container {
+      max-width: var(--width-container-max);
+      margin-inline: auto;
+   }
+
+   @media (max-width: 768px) {
+      .container {
+         padding-inline: 24px;
+      }
+   }
+
+   @media (max-width: 640px) {
+      .container {
+         padding-inline: 16px;
+      }
+   }
+}

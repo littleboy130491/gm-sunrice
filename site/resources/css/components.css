@@ -1,0 +1,48 @@
+/* Global Button Settings */
+.button {
+   text-transform: uppercase;
+   border-radius: 100px;
+   padding: 14px 24px 12px 24px;
+   letter-spacing: 2px;
+   font-size: 0.9rem;
+}
+
+.button svg {
+   margin-top: -3px;
+}
+
+
+/* Button - Green */
+.button--primary {
+    color: var(--color-text-button-primary);
+    background: var(--color-bg-button-primary);
+}
+
+.button--primary:hover {
+   color: var(--color-text-button-secondary);
+   background: var(--color-bg-button-secondary);
+}
+
+
+/* Button - Yellow */
+.button--secondary {
+    color: var(--color-text-button-secondary);
+    background: var(--color-bg-button-secondary);
+}
+
+.button--secondary:hover {
+   color: var(--color-text-button-primary);
+   background: var(--color-bg-button-primary);
+}
+
+
+/* Button - White */
+.button--white {
+   color: var(--color-primary);
+   background: white;
+}
+
+.button--white:hover {
+   color: var(--color-text-button-secondary);
+   background: var(--color-bg-button-secondary);
+}

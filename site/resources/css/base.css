@@ -1,0 +1,136 @@
+/* =========================
+   1. Box sizing
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =========================
+   2. Reset margins
+========================= */
+* {
+  margin: 0;
+}
+
+/* =========================
+   3. Root defaults
+========================= */
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* =========================
+   4. Body defaults
+========================= */
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   5. Media elements
+========================= */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   6. Form elements
+========================= */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* =========================
+   7. Links
+========================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   8. Lists
+========================= */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* =========================
+   9. Headings
+========================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* =========================
+   10. Tables
+========================= */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* =========================
+   11. Text overflow
+========================= */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* =========================
+   12. Accessibility
+========================= */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* =========================
+   13. Reduce motion
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

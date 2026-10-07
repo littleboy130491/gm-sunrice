@@ -1,0 +1,365 @@
+h1 {
+    font-family: var(--font-h1);
+    font-weight: var(--weight-h1);
+    font-size: var(--text-h1);
+    line-height: var(--leading-h1);
+    letter-spacing: var(--tracking-h1);
+    text-transform: var(--transform-h1);
+    color: var(--color-h1);
+    max-width: var(--measure-h1);
+}
+
+h2 {
+    font-family: var(--font-h2);
+    font-weight: var(--weight-h2);
+    font-size: var(--text-h2);
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
+    text-transform: var(--transform-h2);
+    color: var(--color-h2);
+    max-width: var(--measure-h2);
+}
+
+h3 {
+    font-family: var(--font-h3);
+    font-weight: var(--weight-h3);
+    font-size: var(--text-h3);
+    line-height: var(--leading-h3);
+    letter-spacing: var(--tracking-h3);
+    text-transform: var(--transform-h3);
+    color: var(--color-h3);
+    max-width: var(--measure-h3);
+}
+
+h4 {
+    font-family: var(--font-h4);
+    font-weight: var(--weight-h4);
+    font-size: var(--text-h4);
+    line-height: var(--leading-h4);
+    letter-spacing: var(--tracking-h4);
+    text-transform: var(--transform-h4);
+    color: var(--color-h4);
+    max-width: var(--measure-h4);
+}
+
+h5 {
+    font-family: var(--font-h5);
+    font-weight: var(--weight-h5);
+    font-size: var(--text-h5);
+    line-height: var(--leading-h5);
+    letter-spacing: var(--tracking-h5);
+    text-transform: var(--transform-h5);
+    color: var(--color-h5);
+    max-width: var(--measure-h5);
+}
+
+h6 {
+    font-family: var(--font-h6);
+    font-weight: var(--weight-h6);
+    font-size: var(--text-h6);
+    line-height: var(--leading-h6);
+    letter-spacing: var(--tracking-h6);
+    text-transform: var(--transform-h6);
+    color: var(--color-h6);
+    max-width: var(--measure-h6);
+}
+
+p {
+    font-family: var(--font-p);
+    font-weight: var(--weight-p);
+    font-size: var(--text-p);
+    line-height: var(--leading-p);
+    letter-spacing: var(--tracking-p);
+    text-transform: var(--transform-p);
+    color: var(--color-p);
+    max-width: var(--measure-p);
+}
+
+.subheading {
+    font-family: var(--font-subheading);
+    font-weight: var(--weight-subheading);
+    font-size: var(--text-subheading);
+    line-height: var(--leading-subheading);
+    letter-spacing: var(--tracking-subheading);
+    text-transform: var(--transform-subheading);
+    color: var(--color-subheading);
+    max-width: var(--measure-subheading);
+}
+
+.eyebrow {
+    font-family: var(--font-eyebrow);
+    font-weight: var(--weight-eyebrow);
+    font-size: var(--text-eyebrow);
+    line-height: var(--leading-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: var(--transform-eyebrow);
+    color: var(--color-eyebrow);
+    max-width: var(--measure-eyebrow);
+}
+
+/* links */
+a {
+    font-family: var(--font-body);
+    font-size: var(--text-a);
+    line-height: var(--leading-a);
+    letter-spacing: var(--tracking-a);
+    text-transform: var(--transform-a);
+    color: var(--color-a);
+    max-width: var(--measure-a);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-button);
+    font-weight: var(--weight-button);
+    font-size: var(--text-button);
+    line-height: var(--leading-button);
+    letter-spacing: var(--tracking-button);
+    text-transform: var(--transform-button);
+    color: var(--color-text-button);
+    background: var(--bg-button);
+    padding-block: var(--padding-block-button);
+    padding-inline: var(--padding-inline-button);
+    border: 1px solid transparent;
+    border-radius: var(--radius-button);
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    filter: brightness(0.95);
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+/* decorations */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-badge, system-ui, -apple-system, sans-serif);
+    font-weight: var(--weight-badge, 600);
+    font-size: var(--text-badge, 0.875rem);
+    line-height: var(--leading-badge, 1.25);
+    letter-spacing: var(--tracking-badge, 0.025em);
+    text-transform: var(--transform-badge, uppercase);
+    color: var(--color-badge, #ffffff);
+    max-width: var(--measure-badge, none);
+    padding-block: var(--padding-block-badge, 0.25rem);
+    padding-inline: var(--padding-inline-badge, 0.625rem);
+    border-radius: var(--radius-badge, 9999px);
+    background: var(--bg-badge, #2563eb);
+}
+
+/* tables */
+table {
+    font-family: var(--font-table);
+    font-weight: var(--weight-table);
+    font-size: var(--text-table);
+    line-height: var(--leading-table);
+    letter-spacing: var(--tracking-table);
+    text-transform: var(--transform-table);
+    color: var(--color-table);
+    max-width: var(--measure-table);
+    border-collapse: var(--border-collapse-table);
+    border-spacing: var(--border-spacing-table);
+    width: 100%;
+}
+
+th {
+    font-family: var(--font-th);
+    font-weight: var(--weight-th);
+    font-size: var(--text-th);
+    line-height: var(--leading-th);
+    letter-spacing: var(--tracking-th);
+    text-transform: var(--transform-th);
+    color: var(--color-th);
+    max-width: var(--measure-th);
+    text-align: var(--align-th);
+    padding-block: var(--padding-block-th);
+    padding-inline: var(--padding-inline-th);
+    border-bottom: var(--border-bottom-th);
+    background: var(--bg-th);
+}
+
+td {
+    font-family: var(--font-td);
+    font-weight: var(--weight-td);
+    font-size: var(--text-td);
+    line-height: var(--leading-td);
+    letter-spacing: var(--tracking-td);
+    text-transform: var(--transform-td);
+    color: var(--color-td);
+    max-width: var(--measure-td);
+    text-align: var(--align-td);
+    padding-block: var(--padding-block-td);
+    padding-inline: var(--padding-inline-td);
+    border-bottom: var(--border-bottom-td);
+}
+
+thead {
+    background: var(--bg-thead);
+}
+
+tbody {
+    background: var(--bg-tbody);
+}
+
+tbody tr:hover {
+    background: var(--bg-table-row-hover);
+}
+
+tfoot {
+    background: var(--bg-tfoot);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: var(--text-h1-tablet);
+    }
+
+    h2 {
+        font-size: var(--text-h2-tablet);
+    }
+
+    h3 {
+        font-size: var(--text-h3-tablet);
+    }
+
+    h4 {
+        font-size: var(--text-h4-tablet);
+    }
+
+    h5 {
+        font-size: var(--text-h5-tablet);
+    }
+
+    h6 {
+        font-size: var(--text-h6-tablet);
+    }
+
+    p {
+        font-size: var(--text-p-tablet);
+    }
+
+    .subheading {
+        font-size: var(--text-subheading-tablet);
+    }
+
+    .eyebrow {
+        font-size: var(--text-eyebrow-tablet);
+    }
+
+    a {
+        font-size: var(--text-a-tablet);
+    }
+
+    .button {
+        font-size: var(--text-button-tablet);
+        padding-block: var(--padding-block-button-tablet);
+        padding-inline: var(--padding-inline-button-tablet);
+    }
+
+    .badge {
+        font-size: var(--text-badge-tablet);
+        padding-block: var(--padding-block-badge-tablet);
+        padding-inline: var(--padding-inline-badge-tablet);
+    }
+
+    th {
+        font-size: var(--text-th-tablet);
+        padding-block: var(--padding-block-th-tablet);
+        padding-inline: var(--padding-inline-th-tablet);
+    }
+
+    table {
+        font-size: var(--text-table-tablet);
+    }
+
+    td {
+        font-size: var(--text-td-tablet);
+        padding-block: var(--padding-block-td-tablet);
+        padding-inline: var(--padding-inline-td-tablet);
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: var(--text-h1-mobile);
+    }
+
+    h2 {
+        font-size: var(--text-h2-mobile);
+    }
+
+    h3 {
+        font-size: var(--text-h3-mobile);
+    }
+
+    h4 {
+        font-size: var(--text-h4-mobile);
+    }
+
+    h5 {
+        font-size: var(--text-h5-mobile);
+    }
+
+    h6 {
+        font-size: var(--text-h6-mobile);
+    }
+
+    p {
+        font-size: var(--text-p-mobile);
+    }
+
+    .subheading {
+        font-size: var(--text-subheading-mobile);
+    }
+
+    .eyebrow {
+        font-size: var(--text-eyebrow-mobile);
+    }
+
+    a {
+        font-size: var(--text-a-mobile);
+    }
+
+    .button {
+        font-size: var(--text-button-mobile);
+        padding-block: var(--padding-block-button-mobile);
+        padding-inline: var(--padding-inline-button-mobile);
+    }
+
+    .badge {
+        font-size: var(--text-badge-mobile);
+        padding-block: var(--padding-block-badge-mobile);
+        padding-inline: var(--padding-inline-badge-mobile);
+    }
+
+    th {
+        font-size: var(--text-th-mobile);
+        padding-block: var(--padding-block-th-mobile);
+        padding-inline: var(--padding-inline-th-mobile);
+    }
+
+    table {
+        font-size: var(--text-table-mobile);
+    }
+
+    td {
+        font-size: var(--text-td-mobile);
+        padding-block: var(--padding-block-td-mobile);
+        padding-inline: var(--padding-inline-td-mobile);
+    }
+}

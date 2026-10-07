@@ -1,0 +1,302 @@
+header {
+  background: var(--color-bg-header);
+}
+
+.header-fixed {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  width: 100%;
+  z-index: 40;
+}
+
+footer {
+  background: none;
+}
+
+section, .section {
+  padding-block: var(--padding-block-section);
+}
+
+.container {
+  max-width: var(--width-container-max);
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: var(--width-container-tablet);
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+
+/* Flow: default spacing between direct siblings, usually used together with container class */
+.flow > * + * {
+  margin-block-start: var(--flow-space);
+}
+
+/* Flow: make plain links accept vertical margin spacing */
+.flow > a:not(.button) {
+  display: inline-block;
+}
+
+/* Flow: tighter spacing from eyebrow/subheading to heading */
+.flow > :is(.subheading, .eyebrow) + :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: var(--flow-space-label-to-heading);
+}
+
+/* Flow: spacing from heading to paragraph */
+.flow > :is(h1, h2, h3, h4, h5, h6) + p {
+  margin-block-start: var(--flow-space-heading-to-p);
+}
+
+/* Flow: spacing from paragraph to link/button action */
+.flow > p + :is(a, .button, button) {
+  margin-block-start: var(--flow-space-p-to-action);
+}
+
+/* Flow: spacing from heading directly to link/button action */
+.flow > :is(h1, h2, h3, h4, h5, h6) + :is(a, .button, button) {
+  margin-block-start: var(--flow-space-heading-to-action);
+}
+
+/* Flow: spacing from image to paragraph */
+.flow > img + p {
+  margin-block-start: var(--flow-space-img-to-p);
+}
+
+/* Flow: spacing from paragraph to image */
+.flow > p + img {
+  margin-block-start: var(--flow-space-p-to-img);
+}
+
+/* Flow: spacing from icon to paragraph */
+.flow > .icon + p {
+  margin-block-start: var(--flow-space-icon-to-p);
+}
+
+/* Flow: spacing from paragraph to icon */
+.flow > p + .icon {
+  margin-block-start: var(--flow-space-p-to-icon);
+}
+
+/* Stack: vertical rhythm */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+}
+
+/* Cluster: horizontal group that wraps */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-cluster);
+  align-items: center;
+}
+
+/* Grid: simple grid layout */
+.grid {
+  display: grid;
+  gap: var(--gap-grid);
+}
+
+/* Grid: 2 columns */
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Grid: 3 columns */
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Grid: 4 columns */
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Grid: auto-fit with min-width */
+.grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+/* Utility classes */
+.full-width {
+  max-width: var(--width-default);
+}
+
+/* Flexbox alignment - cross axis */
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+/* Flexbox alignment - main axis */
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+/* Margin auto for centering */
+.mx-auto {
+  margin-inline: auto;
+}
+
+.my-auto {
+  margin-block: auto;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+/*
+  Prose: long-form article layout — measure, rhythm, and overflow only
+  Wrap article content in <article class="prose"> or <div class="prose">
+*/
+.prose {
+  max-width: var(--measure-prose);
+  margin-inline: auto;
+}
+
+.prose > * + * {
+  margin-block-start: var(--flow-space-prose);
+}
+
+.prose > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: var(--flow-space-prose-before-heading);
+}
+
+.prose > :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-block-start: 0;
+}
+
+.prose > :is(h1, h2, h3, h4, h5, h6) + * {
+  margin-block-start: var(--flow-space-prose-after-heading);
+}
+
+.prose :is(ul, ol) {
+  padding-inline-start: var(--padding-inline-prose-list);
+}
+
+.prose :is(ul, ol) li + li {
+  margin-block-start: var(--flow-space-prose-list-item);
+}
+
+.prose blockquote {
+  padding-inline-start: var(--padding-inline-prose-blockquote);
+}
+
+.prose pre {
+  padding: var(--padding-prose-pre);
+  overflow-x: auto;
+}
+
+.prose :is(img, video) {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose figure figcaption {
+  margin-block-start: var(--flow-space-prose-figcaption);
+}
+
+.prose hr {
+  margin-block: var(--margin-block-prose-hr);
+}
+
+
+
+/* Layout Paragraf */
+.richtext > * + * {
+  margin-block-start: var(--flow-space);
+}
+
+.richtext :is(ul, ol) {
+  padding-inline-start: var(--padding-inline-prose-list);
+}
+
+.richtext ul {
+  list-style: disc;
+  margin: 0 0 1rem 0;
+}
+
+.richtext ol {
+  list-style: decimal;
+  margin: 0 0 1rem 0;
+}
+
+.richtext :is(ul, ol) li + li {
+  margin-block-start: var(--flow-space-prose-list-item);
+}
+
+.richtext :is(ul, ol) li > p {
+  margin-block: 0;
+}
+
+.richtext > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: var(--flow-space-prose-before-heading);
+}
+
+.richtext > :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-block-start: 0;
+}
+
+.richtext > :is(h1, h2, h3, h4, h5, h6) + * {
+  margin-block-start: var(--flow-space-prose-after-heading);
+}
+
+.richtext blockquote {
+  padding-inline-start: var(--padding-inline-prose-blockquote);
+}
+
+.richtext a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.richtext :is(img, video) {
+  max-width: 100%;
+  height: auto;
+}
+
+.richtext p + p {
+  margin-block-start: 1rem;
+}
+
+.richtext p:empty {
+  min-height: 1em;
+}
