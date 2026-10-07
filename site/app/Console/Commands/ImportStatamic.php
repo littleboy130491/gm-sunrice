@@ -48,15 +48,16 @@ class ImportStatamic extends Command
     private const STAGES = ['assets', 'structure', 'taxonomies', 'entries', 'globals', 'forms', 'menus', 'settings'];
 
     /** Collection handles that have no public detail page in the source. */
-    private const NO_SINGLE = ['achievements', 'pop_up'];
+    private const NO_SINGLE = ['achievements', 'pop_up', 'dealers'];
 
     /** Per-collection route overrides (Statamic route/mount semantics). */
     private const ROUTES = [
         'pages' => '/{slug}',
         'posts' => '/berita-dan-artikel/{slug}',
         'products' => '/products/{slug}',
-        'dealers' => '/dealer/{slug}', // statamic `mount: dealers` on the /dealer page
         'careers' => '/karier/{slug}',
+        // `dealers` is mount-only in statamic — no single pages (verified
+        // against production: /dealer/{slug} 404s on gmmobil.co.id).
     ];
 
     private string $src;
@@ -563,6 +564,7 @@ class ImportStatamic extends Command
 
     private function globals(): void
     {
+        $this->ensureBlueprintIds();
         foreach (glob($this->src.'/content/globals/*.yaml') ?: [] as $defFile) {
             $handle = pathinfo($defFile, PATHINFO_FILENAME);
             $def = Statamic::readYaml($defFile);
@@ -832,6 +834,19 @@ class ImportStatamic extends Command
                 'data' => $data,
                 'seo' => $seo,
             ])->save();
+
+            // Sync the entry↔term pivot from converted `terms` fields so
+            // archive queries and the admin term pickers see assignments.
+            $termIds = collect($fields)
+                ->filter(fn ($f) => ($f['type'] ?? '') === 'terms')
+                ->flatMap(fn ($f) => (array) ($data[$f['handle'] ?? ''] ?? []))
+                ->filter(fn ($v) => is_numeric($v))
+                ->map(fn ($v) => (int) $v)
+                ->unique()
+                ->all();
+            if ($termIds !== []) {
+                $entry->terms()->sync($termIds);
+            }
 
             if ($published) {
                 $publish->handle($translation, $row['date']);

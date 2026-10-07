@@ -13,10 +13,12 @@
     $career = sunrice_global('career_label_information');
 
     // Sidebar Career
-    $relatedCareers = gm_entries('careers')
-        ?->where('id', '!=', $entry->id)
-        ->limit(2)
-        ->get() ?? collect();
+    $relatedCareers = (gm_entries('careers')
+        ?->limit(3)
+        ->get() ?? collect())
+        ->reject(fn ($item) => $item->id === $entry->id)
+        ->take(2)
+        ->values();
 
     $normalizeTerms = function ($field) {
         if ($field instanceof \Illuminate\Support\Collection || is_array($field)) {

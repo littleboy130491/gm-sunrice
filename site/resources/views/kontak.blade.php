@@ -15,14 +15,14 @@
 
     // Telepon
     $phones = collect($globals['phone_numbers'] ?? [])
-        ->filter(fn($item) => ($item['enabled'] ?? false) && !empty($item['number']))
+        ->filter(fn($item) => (! $item->hidden) && !empty($item['number']))
         ->map(fn($item) => ['label' => $item['label'] ?? null, 'number' => $item['number']])
         ->values()
         ->all();
 
     // Email
     $emails = collect($globals['emails'] ?? [])
-        ->filter(fn($item) => ($item['enabled'] ?? false) && !empty($item['email']))
+        ->filter(fn($item) => (! $item->hidden) && !empty($item['email']))
         ->map(fn($item) => ['label' => $item['label'] ?? null, 'email' => $item['email']])
         ->values()
         ->all();
@@ -72,7 +72,7 @@
             return [
                 'name' => ucfirst($key),
                 'link' => $url,
-                'icon' => $iconRaw ? asset('assets/' . $iconRaw) : null,
+                'icon' => $iconRaw ? gm_asset_url($iconRaw) : null,
             ];
         })
         ->filter()

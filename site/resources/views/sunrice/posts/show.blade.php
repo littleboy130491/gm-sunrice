@@ -98,9 +98,9 @@
                         <div class="flex items-center gap-5">
 
                             {{-- Tanggal --}}
-                            @if ($entry->get('date'))
+                            @if ($entry->published_at)
                                 <p class="uppercase text-(--color-primary) tracking-wider font-medium">
-                                    {{ $entry->get('date')->format('d.m.Y') }}</p>
+                                    {{ $entry->published_at->format('d.m.Y') }}</p>
                             @endif
 
                             {{-- Kategori --}}

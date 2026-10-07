@@ -1,7 +1,7 @@
 @php
     $bodyClass = collect([
         'background-grey',
-        $pageType === 'entry' ? 'entry' : null,
+        ($pageType ?? null) === 'entry' ? 'entry' : null,
         isset($collection) ? 'entry-' . $collection->handle : null,
         isset($collection) ? $collection->handle : null,
         isset($entry) ? 'slug-' . $entry->slug : null,
@@ -41,7 +41,7 @@
                 <div class="w-full flex flex-col gap-3 justify-center items-center z-10 -mt-7 md:-mt-6 lg:-mt-14">
                     <p class="text-center mb-4 w-full md:w-[55%] lg:w-[35%]">{{ $desc }}</p>
                     @if ($btnLabel)
-                        <a href="{{ $btnLink }}" class="button button--secondary">{{ $btnLabel }}</a>
+                        <a href="{{ gm_link_url($btnLink) ?? '/' }}" class="button button--secondary">{{ is_string($btnLabel) ? $btnLabel : '' }}</a>
                     @endif
                 </div>
             </div>

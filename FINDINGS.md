@@ -105,3 +105,32 @@ Problems, gaps and judgement calls discovered during the migration. Add entries 
 
 20. **Dealer `location` field** hydrates as an array (`$loc['latitude']`), not an
     object — templates must use array access for it.
+
+## Frontend parity findings (statamic vs sunrice, side-by-side)
+
+21. **Stale-id trap after re-running stages.** Stages that wipe/recreate rows
+    (entries, terms) orphan ids stored elsewhere: menu `target_id`s, term ids in
+    entry `data`, `homepage_entry_id`. Always re-run dependents in order:
+    `entries,globals,menus,settings`. `globals()` also needs `ensureBlueprintIds()`
+    before it runs standalone (NOT NULL crash otherwise).
+
+22. **Sunrice `HtmlSanitizer` strips relative `img src`.** `allowRelativeLinks()`
+    only covers link attrs — media attrs need `allowRelativeMedias()` (missing
+    upstream). Imported bard images kept `data-asset-id` but lost `src` → all
+    inline images broke. Fix sent upstream: littleboy130491/sunrice-cms PR #20
+    (`task/fix-relative-media-src`); vendored copy patched locally meanwhile.
+    Content re-synced via `entries,globals,menus,settings`.
+
+23. **`entry↔term` pivot was never populated.** Importer now syncs
+    `sunrice_entry_term` from converted `terms`-type fields (fixes KATEGORI
+    sidebars, dealer grid filters, term archives).
+
+24. **`dealers` has no single pages.** Statamic `mount: dealers` only —
+    `/dealer/{slug}` 404s on production gmmobil.co.id, verified live. Moved to
+    `NO_SINGLE` and removed the collection route.
+
+25. **Product comparison API + misc template gaps.** `/api/products/{id}/comparison`
+    ported to `site/routes/web.php` (AJAX spec table); post show date uses
+    `Entry->published_at` (statamic `date` → published_at in importer); career
+    show sidebar — `EntryQuery::where('id','!=',…)` filters *data fields* not
+    columns, use limit+reject instead.
