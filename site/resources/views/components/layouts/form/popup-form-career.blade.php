@@ -94,19 +94,30 @@
                 </button>
             </div>
 
+            {{-- Success --}}
+            <div class="career-form-success rounded-xl bg-green-50 px-5 py-4 text-(--color-primary)/50 border border-(--color-primary)/30 {{ $component->success() ? '' : 'hidden' }}"
+                data-success-message="{{ $successHtml }}">
+                @if ($component->success())
+                    {!! $successHtml !!}
+                @endif
+            </div>
+
             {{-- Error --}}
-            @if ($component->submitted() && session('errors'))
-                <div class="career-form-error rounded-xl bg-red-50 px-5 py-4 text-red-800 border border-red-800/30">
-                    @if (!empty($failedHtml))
-                        <div class="career-form-error-heading mb-2 font-medium">{!! $failedHtml !!}</div>
-                    @endif
-                    <ul class="career-form-error-list flex flex-col gap-1">
+            <div class="career-form-error rounded-xl bg-red-50 px-5 py-4 text-red-800 border border-red-800/30 {{ $component->submitted() && session('errors') ? '' : 'hidden' }}"
+                data-message-failed="{{ $failedHtml }}">
+                @if (!empty($failedHtml))
+                    <div class="career-form-error-heading mb-2 font-medium">{!! $failedHtml !!}</div>
+                @else
+                    <div class="career-form-error-heading mb-2 font-medium hidden"></div>
+                @endif
+                <ul class="career-form-error-list flex flex-col gap-1">
+                    @if ($component->submitted() && session('errors'))
                         @foreach (session('errors')->all() as $error_message)
                             <li>{{ $error_message }}</li>
                         @endforeach
-                    </ul>
-                </div>
-            @endif
+                    @endif
+                </ul>
+            </div>
 
         </x-sunrice::form>
 

@@ -62,6 +62,13 @@
         </button>
     </div>
 
+    {{-- Success --}}
+    @if ($component->success())
+        <div class="rounded-xl bg-green-50 px-5 py-4 text-(--color-primary)/50 border border-(--color-primary)/30">
+            {!! $successHtml !!}
+        </div>
+    @endif
+
     {{-- Error Summary --}}
     @if ($component->submitted() && session('errors'))
         <div class="rounded-xl bg-red-50 px-5 py-4 text-red-800 border border-red-800/30">

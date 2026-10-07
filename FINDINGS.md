@@ -134,3 +134,14 @@ Problems, gaps and judgement calls discovered during the migration. Add entries 
     `Entry->published_at` (statamic `date` → published_at in importer); career
     show sidebar — `EntryQuery::where('id','!=',…)` filters *data fields* not
     columns, use limit+reject instead.
+
+26. **AJAX form submits appeared dead.** `FormSubmitController` always
+    returned a redirect, so `fetch(Accept: application/json)` followed the 302
+    and got HTML — `res.json()` failed silently. Also the ported
+    `popup-form-career` template lacked the `.career-form-success` /
+    `.career-form-error` containers the JS writes into (they only rendered
+    after a non-AJAX failure). Fixed upstream: littleboy130491/sunrice-cms
+    PR #22 returns `422 {errors}` / `200 {success, redirect_url}` when
+    `expectsJson()`; site templates now always render the containers (hidden
+    until flashed), and `contact-form` gained the missing success message.
+    Verified: 422 shows error list, valid submit shows success box.
