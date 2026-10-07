@@ -79,6 +79,7 @@ menus replace items, structure/globals/forms/settings upsert, assets resume via
 | E2E check (testing agent) | Done | all routes 200, /cms populated; **fixed**: Laravel 13 `serializable_classes=false` broke sunrice content cache (500s on warm cache) — see FINDINGS #15 |
 | Templates ported | Done | all 99 statamic Blade views converted → `site/resources/views/`; block partials → `sunrice/blocks/*.blade.php`; full-route sweep: **370/370 URLs → 200** |
 | Frontend parity check | Done | Side-by-side screenshots vs original statamic (both served locally): home, kontak, produk, dealer, berita archive, karier list+show, tentang-kami, industri, sertifikat, layanan-purna-jual, gm-teletech, reman-center, post show, product show — all match. Full sitemap sweep **385/385 URLs → 200**. Fixes found during the check are listed in FINDINGS #21-#25 |
+| Forms working end-to-end | Done | Career apply popup + contact form submit correctly (AJAX JSON + flash fallback). Needed sunrice-cms PR #22 (JSON responses) + always-rendered feedback containers — see FINDINGS #26 |
 | Translations `id`→`en` | Manual (editors) | Decision: translate in /cms, no API. Locales already `[id,en]`. Spot-check done: `/en/*` falls back to `id` content until an `en` translation is published (Ready); an `en` translation for `kontak` → `/en/contact` exists as a working example. Per-entry workflow: open entry in /cms → add `en` translation → translate fields → publish/Ready |
 | Users | Not started | statamic `users/` not migrated yet — decide if needed |
 
