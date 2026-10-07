@@ -1,0 +1,3 @@
+[submodule "statamic"]
+	path = statamic
+	url = https://github.com/littleboy130491/statamic-test-gm.git
